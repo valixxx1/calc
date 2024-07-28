@@ -10,7 +10,7 @@ enum token_id {
 
 struct token {
     enum token_id id;
-    double value;
+    double value; // operators will be here too
 };
 
 int main(void) {
@@ -26,9 +26,12 @@ int main(void) {
     // Get all tokens (separator = space)
     for (char *tok = strtok(expr, " "); tok; tok = strtok(0, " ")) {
         if (isdigit(tok[0])) { // if number
+            double d;
+            sscanf(tok, "%lf", &d); // convert string to double
+            
             tokens[toklen++] = (struct token) {
                 NUMBER,
-                atoi(tok) // convert string to number
+                d
             };
         } else { // if operator
             tokens[toklen++] = (struct token) {
@@ -38,7 +41,7 @@ int main(void) {
         }
     }
 
-    int stack[64]; // stack for counting
+    double stack[64]; // stack for counting
     int stacklen = 0;
 
     // Do Reverse Polish Notation
@@ -63,7 +66,7 @@ int main(void) {
         }
     }
 
-    printf("Value: %d\n", stack[0]);
+    printf("Value: %g\n", stack[0]);
 
     return 0;
 }

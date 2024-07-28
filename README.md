@@ -7,10 +7,10 @@ It is a command utility for math expressions calculating (calculator).
 Now you can calculate math expressions only in Reverse Polish Notation (RPN).
 
 ```
-$ calc
+$ ./a.out                               
 Enter an expression.
-3 1 + 2 / 3 * 1 -
-Value: 5
+1 2 / 4 * 1.5 +      
+Value: 3.5
 ```
 
 # Information
